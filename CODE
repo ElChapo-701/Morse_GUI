@@ -1,0 +1,161 @@
+import time
+import RPi.GPIO as GPIO
+import tkinter
+
+window = tkinter.Tk()
+
+window.title("el Cartel de Sinaloa")
+
+window.geometry("300x300")
+
+window.configure(background = "light sea green")
+
+def clickMe():
+    label.configure(text= 'Enter Word to blink in morse' + name.get())
+    
+
+
+name = tkinter.StringVar()
+
+
+
+
+
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+
+led = 2
+
+
+
+
+
+GPIO.setup(2, GPIO.OUT)
+
+
+
+
+    
+def bcom():
+
+    GPIO.output(led, True)
+    time.sleep(0.5)
+    GPIO.output(led, False)
+    time.sleep(0.5)
+    GPIO.output(led, True)
+    time.sleep(0.5)
+    GPIO.output(led, False)
+    time.sleep(0.5)
+    GPIO.output(led, True)
+    time.sleep(0.5)
+    GPIO.output(led, False)
+    time.sleep(0.5)
+    
+    GPIO.output(led, True)
+    time.sleep(0.5)
+    GPIO.output(led, False)
+    time.sleep(0.5)
+    GPIO.output(led, True)
+    time.sleep(0.5)
+    GPIO.output(led, False)
+    time.sleep(0.5)
+    
+    GPIO.output(led, True)
+    time.sleep(2)
+    GPIO.output(led, False)
+    time.sleep(2)
+    GPIO.output(led, True)
+    time.sleep(0.5)
+    GPIO.output(led, False)
+    time.sleep(0.5)
+    
+    GPIO.output(led, True)
+    time.sleep(0.5)
+    GPIO.output(led, False)
+    time.sleep(0.5)
+    GPIO.output(led, True)
+    time.sleep(2)
+    GPIO.output(led, False)
+    time.sleep(2)
+    
+    GPIO.output(led, True)
+    time.sleep(0.5)
+    GPIO.output(led, False)
+    time.sleep(0.5)
+    GPIO.output(led, True)
+    time.sleep(2)
+    GPIO.output(led, False)
+    time.sleep(2)
+    GPIO.output(led, True)
+    time.sleep(0.5)
+    GPIO.output(led, False)
+    time.sleep(0.5)
+    GPIO.output(led, True)
+    time.sleep(0.5)
+    GPIO.output(led, False)
+    time.sleep(0.5)
+    
+    GPIO.output(led, True)
+    time.sleep(2)
+    GPIO.output(led, False)
+    time.sleep(2)
+    GPIO.output(led, True)
+    time.sleep(2)
+    GPIO.output(led, False)
+    time.sleep(2)
+    GPIO.output(led, True)
+    time.sleep(2)
+    GPIO.output(led, False)
+    time.sleep(2)
+    
+    GPIO.output(led, True)
+    time.sleep(0.5)
+    GPIO.output(led, False)
+    time.sleep(0.5)
+    GPIO.output(led, True)
+    time.sleep(2)
+    GPIO.output(led, False)
+    time.sleep(2)
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+lb02 = tkinter.Label( font=20, bg = "light sea green")
+nameEntered = tkinter.Entry(window, width = 15, textvariable = name)
+
+label = tkinter.Label(window, text = "Enter Word to blink in morse")
+
+
+    
+btn = tkinter.Button(window, text = "Enter Word", bg = "red", command=bcom)
+
+
+
+lb02.pack()
+nameEntered.pack()
+label.pack()
+btn.pack()
+
+            
+
+
+
+
+window.mainloop()
+  
