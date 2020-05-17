@@ -36,126 +36,98 @@ GPIO.setup(2, GPIO.OUT)
 
 
 
+def morse_dash():
+    GPIO.output(led, True)
+    time.sleep(2)
+    GPIO.output(led, False)
+    time.sleep(0.25)
+
+def morse_dot():
+    GPIO.output(led, True)
+    time.sleep(0.25)
+    GPIO.output(led, False)
+    time.sleep(0.25)
     
+
 def bcom():
+        CODE = {' ': '_', 
+        "'": '.----.', 
+        '(': '-.--.-', 
+        ')': '-.--.-', 
+        ',': '--..--', 
+        '-': '-....-', 
+        '.': '.-.-.-', 
+        '/': '-..-.', 
+        '0': '-----', 
+        '1': '.----', 
+        '2': '..---', 
+        '3': '...--', 
+        '4': '....-', 
+        '5': '.....', 
+        '6': '-....', 
+        '7': '--...', 
+        '8': '---..', 
+        '9': '----.', 
+        ':': '---...', 
+        ';': '-.-.-.', 
+        '?': '..--..', 
+        'A': '.-', 
+        'B': '-...', 
+        'C': '-.-.', 
+        'D': '-..', 
+        'E': '.', 
+        'F': '..-.', 
+        'G': '--.', 
+        'H': '....', 
+        'I': '..', 
+        'J': '.---', 
+        'K': '-.-', 
+        'L': '.-..', 
+        'M': '--', 
+        'N': '-.', 
+        'O': '---', 
+        'P': '.--.', 
+        'Q': '--.-', 
+        'R': '.-.', 
+        'S': '...', 
+        'T': '-', 
+        'U': '..-', 
+        'V': '...-', 
+        'W': '.--', 
+        'X': '-..-', 
+        'Y': '-.--', 
+        'Z': '--..', 
+        '_': '..--.-'}
 
-    GPIO.output(led, True)
-    time.sleep(0.5)
-    GPIO.output(led, False)
-    time.sleep(0.5)
-    GPIO.output(led, True)
-    time.sleep(0.5)
-    GPIO.output(led, False)
-    time.sleep(0.5)
-    GPIO.output(led, True)
-    time.sleep(0.5)
-    GPIO.output(led, False)
-    time.sleep(0.5)
+
     
-    GPIO.output(led, True)
-    time.sleep(0.5)
-    GPIO.output(led, False)
-    time.sleep(0.5)
-    GPIO.output(led, True)
-    time.sleep(0.5)
-    GPIO.output(led, False)
-    time.sleep(0.5)
-    
-    GPIO.output(led, True)
-    time.sleep(2)
-    GPIO.output(led, False)
-    time.sleep(2)
-    GPIO.output(led, True)
-    time.sleep(0.5)
-    GPIO.output(led, False)
-    time.sleep(0.5)
-    
-    GPIO.output(led, True)
-    time.sleep(0.5)
-    GPIO.output(led, False)
-    time.sleep(0.5)
-    GPIO.output(led, True)
-    time.sleep(2)
-    GPIO.output(led, False)
-    time.sleep(2)
-    
-    GPIO.output(led, True)
-    time.sleep(0.5)
-    GPIO.output(led, False)
-    time.sleep(0.5)
-    GPIO.output(led, True)
-    time.sleep(2)
-    GPIO.output(led, False)
-    time.sleep(2)
-    GPIO.output(led, True)
-    time.sleep(0.5)
-    GPIO.output(led, False)
-    time.sleep(0.5)
-    GPIO.output(led, True)
-    time.sleep(0.5)
-    GPIO.output(led, False)
-    time.sleep(0.5)
-    
-    GPIO.output(led, True)
-    time.sleep(2)
-    GPIO.output(led, False)
-    time.sleep(2)
-    GPIO.output(led, True)
-    time.sleep(2)
-    GPIO.output(led, False)
-    time.sleep(2)
-    GPIO.output(led, True)
-    time.sleep(2)
-    GPIO.output(led, False)
-    time.sleep(2)
-    
-    GPIO.output(led, True)
-    time.sleep(0.5)
-    GPIO.output(led, False)
-    time.sleep(0.5)
-    GPIO.output(led, True)
-    time.sleep(2)
-    GPIO.output(led, False)
-    time.sleep(2)
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 lb02 = tkinter.Label( font=20, bg = "light sea green")
-nameEntered = tkinter.Entry(window, width = 15, textvariable = name)
-
+sentenceEntered = tkinter.Entry(window, width = 15, textvariable = name)
 label = tkinter.Label(window, text = "Enter Word to blink in morse")
-
-
-    
 btn = tkinter.Button(window, text = "Enter Word", bg = "red", command=bcom)
 
-
-
 lb02.pack()
-nameEntered.pack()
+sentenceEntered.pack()
 label.pack()
 btn.pack()
 
-            
-
-
-
-
 window.mainloop()
-  
+        
+
+def convertToMorseCode(sentence):
+    sentence = sentence.upper()
+    encodedSentence = ""
+    for character in sentence:
+        encodedSentence += CODE[character] + " " 
+    return encodedSentence
+    
+
+    while True:
+        encodedSentence = convertToMorseCode(sentence)
+        print(encodedSentence)
+        pattern = re.compile('.')
+        if pattern.match(encodedSentence):
+              [morse_dot() for led in range(True)]
+        else:
+              [morse_dash() for led in range(True)]
+           
